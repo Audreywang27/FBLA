@@ -1,40 +1,82 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gym Arena - SHS</title>
+    <title>Community Gym Rental Website</title>
+    <style>
+       .banner {
+            width: 100%;  /* Make the banner full-width */
+            background-color: #251c86;  /* Background color of the banner */
+            color: white;  /* Text color */
+            padding: 20px 0;  /* Padding for spacing */
+            font-family: 'Times New Roman', Times, serif;  /* Font style */
+            text-align: center;
+            position: relative;  /* Position relative for floating content */
+        }
+
+        /* Image style to position it to the left */
+        .banner img {
+            width: 50px;  /* Image width */
+            height: 75px;  /* Image height */
+            margin-right: 15px;  /* Space between image and title */
+            float: left;  /* Align image to the left */
+        }
+
+       /* Center the body content */
+        body {
+            display: flex;
+            justify-content: center; /* Horizontally center */
+            align-items: center;     /* Vertically center */
+            height: 100vh;           /* Full viewport height */
+            margin: 0;               /* Remove default margin */
+            flex-direction: column;  /* Stack content vertically */
+        }
+
+        /* Center the text within each section */
+        h1, p {
+            text-align: center;
+        }
+
+        /* Style the buttons */
+        button {
+            background-color: lightsalmon;
+            color: cadetblue;
+            border-radius: 5px;
+            padding: 10px 20px;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        button:hover {
+            background-color: coral;
+        }
+
+        /* Optional: Center image */
+        img {
+            display: block;
+            margin: 20px auto; /* Horizontally center image */
+        }
+    </style>
 </head>
 <body>
-        <!--hr = creates a line thingy seperation, h1 = biggest header size, p creates a new bunch of text, br is a break in the thingy-->
-        <h1> Community Gym Rentals </h1>
-        <hr> 
-        <br>
-        <h2> Hello! Welcome to our community's gym rental website! Please click on the following buttons to take you to informational pages!</h2>
-
-        <h3> Information about the school's arena</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.        </p>
-                <p> Information about the school's arena</p>
-           <img src="https://res.cloudinary.com/simpleview/image/upload/v1651859544/clients/indiana/Chris_Smith_Owned_2581_wl_3c53cab0_7283_4cf5_8d17_2d428517ddd1_medium_8da7a28f-a5bf-4574-b7af-96317c4257a8.jpg" width = 300 height = 200 alt="Beautiful picture of our school's gym">
-        <br>
-        <a href = "page2.html" target =_self title="This takes you to page 2">
-            Availability Calendar
-        </a>
-        <br>
-        <br>
-        <a href = "page3.html" target =_self title="This takes you to page 3">
-            Prices
-        </a>
+    <!-- Content starts here -->
+     <div class = "banner">
+      <img size = "width: 25px; height: 50px;" src="https://resources.finalsite.net/images/f_auto,q_auto/v1714404178/solonschoolsorg/rwqjnjryyqeww8rk5qxv/SCLogo.png" alt="Solon Schools logo">
+        <h1 size = "font-size: 48px;">Community Gym Rentals</h1>
+     </div>
+    <hr>
+    <p>Hello! Welcome to our community's gym rental website! Please click on the following buttons to take you to informational pages!</p>
+    <img src="https://res.cloudinary.com/simpleview/image/upload/v1651859544/clients/indiana/Chris_Smith_Owned_2581_wl_3c53cab0_7283_4cf5_8d17_2d428517ddd1_medium_8da7a28f-a5bf-4574-b7af-96317c4257a8.jpg" width="300" height="200" alt="Beautiful picture of our school's gym">
+    <p>Information about the school's arena</p>
+    <a href="calendar.html" target="_self" title="This takes you to page 2">
+        <button>Availability Calendar</button>
+    </a>
+    <a href="prices.html" target="_self" title="This takes you to page 3">
+        <button>Prices</button>
+    </a>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
