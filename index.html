@@ -6,23 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Community Gym Rental Website</title>
     <style>
-       .banner {
-            width: 100%;  /* Make the banner full-width */
-            background-color: #251c86;  /* Background color of the banner */
-            color: white;  /* Text color */
-            padding: 20px 0;  /* Padding for spacing */
-            font-family: 'Times New Roman', Times, serif;  /* Font style */
-            text-align: center;
-            position: relative;  /* Position relative for floating content */
-        }
 
-        /* Image style to position it to the left */
-        .banner img {
-            width: 50px;  /* Image width */
-            height: 75px;  /* Image height */
-            margin-right: 15px;  /* Space between image and title */
-            float: left;  /* Align image to the left */
-        }
+    .banner {
+        display: flex; /* Use flexbox */
+        align-items: center; /* Align items vertically */
+        justify-content: center; /* Center the content */
+        width: 100%; /* Full width */
+        background-color: #251c86; /* Background color */
+        color: white; /* Text color */
+        padding: 20px; /* Padding for spacing */
+        font-family: 'Times New Roman', Times, serif; /* Font style */
+        margin: 0; /* Remove extra margin */
+        font-size: 48px; /* Adjust font size */
+    }
+
+    .banner img {
+     width: 50px; /* Image width */
+     height: 75px; /* Image height */
+     margin-right: 15px; /* Space between image and text */
+    }
+
+    
 
        /* Center the body content */
         body {
@@ -41,8 +45,8 @@
 
         /* Style the buttons */
         button {
-            background-color: lightsalmon;
-            color: cadetblue;
+            background-color: #251c86;
+            color: white;
             border-radius: 5px;
             padding: 10px 20px;
             border: none;
@@ -52,7 +56,7 @@
         }
 
         button:hover {
-            background-color: coral;
+            background-color: rgb(83, 80, 255);
         }
 
         /* Optional: Center image */
@@ -64,10 +68,10 @@
 </head>
 <body>
     <!-- Content starts here -->
-     <div class = "banner">
-      <img size = "width: 25px; height: 50px;" src="https://resources.finalsite.net/images/f_auto,q_auto/v1714404178/solonschoolsorg/rwqjnjryyqeww8rk5qxv/SCLogo.png" alt="Solon Schools logo">
-        <h1 size = "font-size: 48px;">Community Gym Rentals</h1>
-     </div>
+    <div class="banner">
+        <img src="https://resources.finalsite.net/images/f_auto,q_auto/v1714404178/solonschoolsorg/rwqjnjryyqeww8rk5qxv/SCLogo.png" width="50" height="75" alt="Solon Schools logo">
+        <h1>Community Gym Rentals</h1>
+    </div>
     <hr>
     <p>Hello! Welcome to our community's gym rental website! Please click on the following buttons to take you to informational pages!</p>
     <img src="https://res.cloudinary.com/simpleview/image/upload/v1651859544/clients/indiana/Chris_Smith_Owned_2581_wl_3c53cab0_7283_4cf5_8d17_2d428517ddd1_medium_8da7a28f-a5bf-4574-b7af-96317c4257a8.jpg" width="300" height="200" alt="Beautiful picture of our school's gym">
