@@ -1,26 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-     <meta name = "description" content="cats">
-     <meta name = "viewport" content = "width =device-width, inital-scale=1.0">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="2">
-    <title>Document</title>
+    <title>Check Out</title>
+
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            text-align: center;
+            background-color: white;
+        }
+
+        .banner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            background-color: #251c86;
+            color: white;
+            padding: 20px;
+            font-size: 36px;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .checkout-container {
+            width: 80%;
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 20px;
+            border: 2px solid #251c86;
+            border-radius: 10px;
+            background-color: white;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #251c86;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #251c86;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #1a1466;
+        }
+    </style>
 </head>
 <body>
-    
-    <h1> 
-        Check Out
-    </h1> 
 
-    <form>
+    <div class="banner">Check Out</div>
 
-        <label>
-            Name of buyer:
-        </label>
-        <input type = "text">
-    </form>
-   
+    <div class="checkout-container">
+        <form id="checkout-form">
+            <label for="buyer-name">Name of Buyer:</label>
+            <input type="text" id="buyer-name" required>
+
+            <label for="buyer-address">Address:</label>
+            <input type="text" id="buyer-address" required>
+
+            <label for="price">Price Fees:</label>
+            <input type="text" id="price" required>
+
+            <label for="deposit">Deposit Requirements:</label>
+            <input type="text" id="deposit" required>
+
+            <label for="payment-method">Payment Method:</label>
+            <select id="payment-method" required>
+                <option value="">Select a payment method</option>
+                <option value="credit-card">Credit Card</option>
+                <option value="paypal">PayPal</option>
+                <option value="bank-transfer">Bank Transfer</option>
+                <option value="cash">Cash</option>
+            </select>
+
+            <label for="date">Selected Date:</label>
+            <input type="text" id="date" readonly>
+
+            <label for="availability">Time Availability:</label>
+            <input type="text" id="availability" readonly>
+
+            <label for="duration">Duration:</label>
+            <select id="duration" required>
+                <option value="">Select duration</option>
+                <option value="full-day">Full Day</option>
+                <option value="half-day">Half Day</option>
+                <option value="specific-hours">Specific Hours</option>
+            </select>
+
+            <label for="purpose">Purpose of Use:</label>
+            <input type="text" id="purpose" required>
+
+            <label for="capacity">Estimated Capacity:</label>
+            <input type="number" id="capacity" min="1" required>
+
+            <label for="equipment">Equipment Usage:</label>
+            <textarea id="equipment" placeholder="List any equipment needed (weights, mats, basketball hoops, etc.)"></textarea>
+
+            <div class="button-container">
+                <button type="submit">Confirm Booking</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function getAvailability(dateString) {
+            const date = new Date(dateString);
+            const month = date.getMonth() + 1; // Months are zero-based
+            const day = date.getDate();
+            const dayOfWeek = date.getDay(); // 0 = Sunday, 6 = Saturday
+            
+            // Winter break: December 19 - January 4
+            if ((month === 12 && day >= 19) || (month === 1 && day <= 4)) {
+                return "7 AM - 12 AM";
+            }
+            
+            // Summer: May 26 - August 13
+            if ((month === 5 && day >= 26) || (month >= 6 && month <= 7) || (month === 8 && day <= 13)) {
+                return "7 AM - 12 AM";
+            }
+
+            // School year: August 14 - May 25
+            if ((month === 8 && day >= 14) || (month >= 9 && month <= 4) || (month === 5 && day <= 25)) {
+                if (dayOfWeek === 0 || dayOfWeek === 6) { // Weekend
+                    return "7 AM - 11 PM";
+                } else { // Weekday
+                    return "4 PM - 9 PM";
+                }
+            }
+
+            return "Unavailable";
+        }
+
+        // Get the selected date from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const selectedDate = urlParams.get('date');
+
+        // Display the selected date and determine availability
+        if (selectedDate) {
+            document.getElementById('date').value = selectedDate;
+            document.getElementById('availability').value = getAvailability(selectedDate);
+        }
+    </script>
+
 </body>
 </html>
