@@ -1,72 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-     <meta name = "description" content="cats">
-     <meta name = "viewport" content = "width =device-width, inital-scale=1.0">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="2">
-    <title>Document</title>
+    <title>Calendar Availability</title>
+    <style>
+        .banner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            background-color: #251c86;
+            color: white;
+            padding: 20px;
+            font-family: 'Times New Roman', Times, serif;
+            margin: 0;
+            font-size: 48px;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            text-align: center;
+            background-color: white;
+        }
+        .month {
+            margin: 20px auto;
+            border: 2px solid #251c86;
+            padding: 10px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 600px;
+            background-color: white;
+        }
+        .month h2 {
+            background-color: #251c86;
+            color: white;
+            padding: 10px;
+            margin: 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+        }
+        th, td {
+            width: 14%;
+            height: 40px;
+            text-align: center;
+            border: 1px solid white;
+        }
+        td button {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background-color: white;
+            color: black;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        td button:hover {
+            background-color: lightgray;
+        }
+        .grayed-out button {
+            background-color: #ccc !important;
+            color: gray;
+            pointer-events: none;
+        }
+    </style>
 </head>
 <body>
-    
-    <h1> Calendar </h1> 
-
-    <a
-    href = "index.html" target =_self title="This takes you to the homepage">
-        <button> Homepage </button>
-    </a>
+    <div class="banner">
+        Yearly Calendar For Gym Availability
+    </div>
+    <p>
+        <br>Welcome to our calendar page! All dates not filled gray are available for rental. 
+        <br>Please note that weekday availability between August 14 and May 25 is only after 4 pm and may not always be available for rental.
+    </p>
     <br>
-    <table border="1">
-        <tr>
-            <th>Sunday</th>
-            <th>Monday</th>
-            <th>Tuesday</th>
-            <th> Wednesday</th>
-            <th>Thursday</th>
-            <th>Friday</th>
-            <th>Saturday</th>
-
-        </tr>
-        <tr>
-            <td> Empty </td>
-            <td> Empty </td>
-            <td> Empty </td>
-            <td> Empty </td>
-            <td> Empty </td>
-            <td> Empty </td>
-            <td> Empty </td>
-           
-
-        </tr>
-        <tr>
-            <td> Empty </td>
-            <td> Empty </td>
-            <td> Empty </td>
-            <td> Empty </td>
-            <td> Empty </td>
-            <td> Empty </td>
-            <td> Empty </td>
-        </tr>
-        <tr>
-            <td> Empty </td>
-            <td> Empty </td>
-            <td> Empty </td>
-            <td> Empty </td>
-            <td> Empty </td>
-            <td> Empty </td>
-            <td> Empty </td>
-        </tr>
-        <tr> 
-            <td> Empty </td>
-            <td> Empty </td>
-            <td> Empty </td>
-            <td> Empty </td>
-            <td> Empty </td>
-            <td> Empty </td>
-            <td> Empty </td>
-        </tr>
-    </table>
-   
+    <div id="calendar"></div>
+    <a href="index.html" target="_self" title="This takes you back to the homepage">
+        <button>Homepage</button>
+    </a>
+    <script>
+        const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+        const unavailableDays = ["2025-03-15", "2025-03-16", "2025-04-05", "2025-06-10"];
+        const unavailableWeeks = ["2025-07-07"];
+        function isGrayedOut(dateString) {
+            return unavailableDays.includes(dateString) || unavailableWeeks.some(weekStart => isInSameWeek(weekStart, dateString));
+        }
+        function isInSameWeek(startOfWeek, dateToCheck) {
+            const start = new Date(startOfWeek);
+            const checkDate = new Date(dateToCheck);
+            const startMonday = new Date(start);
+            startMonday.setDate(startMonday.getDate() - startMonday.getDay() + 1);
+            const checkMonday = new Date(checkDate);
+            checkMonday.setDate(checkMonday.getDate() - checkMonday.getDay() + 1);
+            return startMonday.getTime() === checkMonday.getTime();
+        }
+        function generateCalendar(year) {
+            let calendarHTML = "";
+            for (let month = 1; month <= 12; month++) {
+                let firstDay = new Date(year, month - 1, 1).getDay();
+                calendarHTML += `<div class="month"><h2>${months[month - 1]}</h2><table><thead><tr>`;
+                ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].forEach(day => {
+                    calendarHTML += `<th>${day}</th>`;
+                });
+                calendarHTML += "</tr></thead><tbody><tr>";
+                for (let i = 0; i < firstDay; i++) {
+                    calendarHTML += "<td></td>";
+                }
+                for (let day = 1; day <= daysInMonth[month - 1]; day++) {
+                    let dateString = `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+                    let isDisabled = isGrayedOut(dateString) ? "grayed-out" : "";
+                    calendarHTML += `<td class="${isDisabled}">
+                        <button ${isDisabled ? "disabled" : ""} onclick="location.href='prices.html?date=${dateString}'">
+                            ${day}
+                        </button>
+                    </td>`;
+                    if ((day + firstDay) % 7 === 0) {
+                        calendarHTML += "</tr><tr>";
+                    }
+                }
+                calendarHTML += "</tr></tbody></table></div>";
+            }
+            document.getElementById("calendar").innerHTML = calendarHTML;
+        }
+        generateCalendar(2025);
+    </script>
 </body>
 </html>
