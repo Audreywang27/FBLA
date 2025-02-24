@@ -7,43 +7,41 @@
     <title>Community Gym Rental Website</title>
     <style>
 
-    .banner {
-        display: flex; /* Use flexbox */
-        align-items: center; /* Align items vertically */
-        justify-content: center; /* Center the content */
-        width: 100%; /* Full width */
-        background-color: #251c86; /* Background color */
-        color: white; /* Text color */
-        padding: 20px; /* Padding for spacing */
-        font-family: 'Times New Roman', Times, serif; /* Font style */
-        margin: 0; /* Remove extra margin */
-        font-size: 48px; /* Adjust font size */
+    .banner { /*codes for the banner at the top of the screen. This is in CSS btw*/
+        display: flex; 
+        align-items: center;
+        justify-content: center; 
+        width: 100%; 
+        background-color: #251c86; 
+        color: white; 
+        padding: 20px; 
+        font-family: 'Times New Roman', Times, serif; 
+        margin: 0; /* Remove extra margin --> disables like a white border around the banner*/
+        font-size: 48px; 
     }
 
-    .banner img {
-     width: 50px; /* Image width */
-     height: 75px; /* Image height */
-     margin-right: 15px; /* Space between image and text */
+    .banner img { /*There is something wrong with the code here, it keeps on formatting really weird. Might wanna add flexbox to this as well.*/
+     width: 50px; 
+     height: 75px; 
+     margin-right: 15px; 
     }
 
-    
-
-       /* Center the body content */
+    /*The code below is to align the information on the homepage */
         body {
             display: flex;
-            justify-content: center; /* Horizontally center */
-            align-items: center;     /* Vertically center */
-            height: 100vh;           /* Full viewport height */
-            margin: 0;               /* Remove default margin */
-            flex-direction: column;  /* Stack content vertically */
+            justify-content: center;
+            align-items: center;     
+            height: 100vh;           
+            margin: 0;               
+            flex-direction: column;  
         }
 
-        /* Center the text within each section */
+       
         h1, p {
             text-align: center;
         }
 
-        /* Style the buttons */
+        /* Style the buttons that takes you to the other pages */
         button {
             background-color: #251c86;
             color: white;
@@ -58,16 +56,15 @@
         button:hover {
             background-color: rgb(83, 80, 255);
         }
-
-        /* Optional: Center image */
-        img {
-            display: block;
-            margin: 20px auto; /* Horizontally center image */
-        }
     </style>
 </head>
 <body>
-    <!-- Content starts here -->
+    <!-- Info for the content...back in HTML code -->
+    <!-- I kinda wanna make it so that there is a button on the side that can take you down to the calendar. 
+    we can just add the calendar at the bottom of the homepage, like the SC website at school, and then just make it a bit more user friendly.
+    the buttons are kinda too random and lowkey useless now, what's the point of them? just gotta make one page I think, and then we will be fine
+    But if time doesn't permit, then the separate pages might be okay i guess
+    -->
     <div class="banner">
         <img src="https://resources.finalsite.net/images/f_auto,q_auto/v1714404178/solonschoolsorg/rwqjnjryyqeww8rk5qxv/SCLogo.png" width="50" height="75" alt="Solon Schools logo">
         <h1>Community Gym Rentals</h1>
@@ -76,9 +73,9 @@
     <p>Hello! Welcome to our community's gym rental website! Please click on the following buttons to take you to informational pages!</p>
     <img src="https://res.cloudinary.com/simpleview/image/upload/v1651859544/clients/indiana/Chris_Smith_Owned_2581_wl_3c53cab0_7283_4cf5_8d17_2d428517ddd1_medium_8da7a28f-a5bf-4574-b7af-96317c4257a8.jpg" width="300" height="200" alt="Beautiful picture of our school's gym">
     <p>Information about the school's arena</p>
-    <a href="calendar.html" target="_self" title="This takes you to page 2">
+    <a href="calendar.html" target="_self" title="This takes you to our calendar">
         <button>Availability Calendar</button>
-    </a>
+    </a> 
     <a href="prices.html" target="_self" title="This takes you to page 3">
         <button>Prices</button>
     </a>
