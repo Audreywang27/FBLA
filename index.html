@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Community Gym Rental Website</title>
     <style>
+    
+    :root {
+            --bg-color: #bcbcbc; 
+        }
 
     .banner { /*codes for the banner at the top of the screen. This is in CSS btw*/
         display: flex; 
@@ -13,17 +17,21 @@
         justify-content: center; 
         width: 100%; 
         background-color: #251c86; 
-        color: white; 
+        color: rgb(255, 255, 255); 
+        text-shadow: 2px 2px 4px black;
         padding: 20px; 
         font-family: 'Times New Roman', Times, serif; 
-        margin: 0; /* Remove extra margin --> disables like a white border around the banner*/
-        font-size: 48px; 
+        margin: 5;
+        font-size: 40px; 
+        height: 80px; 
     }
 
     .banner img { /*There is something wrong with the code here, it keeps on formatting really weird. Might wanna add flexbox to this as well.*/
      width: 50px; 
      height: 75px; 
      margin-right: 15px; 
+     display: flex; 
+     align-items: left; 
     }
 
     /*The code below is to align the information on the homepage (the stuff below the center title)*/
@@ -31,7 +39,7 @@
             display: flex;
             justify-content: center;
             align-items: center;     
-            height: 100vh;           
+            min-height: 100vh;           
             margin: 0;               
             flex-direction: column;  
         }
@@ -56,6 +64,33 @@
         button:hover {
             background-color: rgb(83, 80, 255);
         }
+
+     /* This is stuff for the footer*/
+    footer {
+         background-color: #251c86;
+        color: white; 
+        text-align: center; 
+        padding: 15px; 
+        width: 100%; 
+        margin-top: auto; /* Pushes it to the bottom */
+        }
+
+    footer p {
+        margin: 0;
+        font-size: 14px;
+    }
+
+    /*Prevents overflow*/
+
+    body {
+        overflow-x: hidden;
+    }
+
+    iframe {
+        max-width: 90%; /* Ensure the iframe doesn't overflow horizontally */
+        width: 80%;
+    }
+
     </style>
 </head>
 <body>
@@ -71,13 +106,26 @@
     </div>
     <hr>
     <p>Hello! Welcome to our community's gym rental website! Please click on the following buttons to take you to informational pages!</p>
+    
     <img src="https://res.cloudinary.com/simpleview/image/upload/v1651859544/clients/indiana/Chris_Smith_Owned_2581_wl_3c53cab0_7283_4cf5_8d17_2d428517ddd1_medium_8da7a28f-a5bf-4574-b7af-96317c4257a8.jpg" width="300" height="200" alt="Beautiful picture of our school's gym">
+    
     <p>Information about the school's arena</p>
+
+    <iframe src = "https://docs.google.com/document/d/18rAL52JtK_oY9jk7NTp0YesWw4Iu7T_I57ZiYYdEMe0/edit?usp=sharing" width="80%" height="500" style="margin-bottom: 20px;"></iframe> <!-- We are going to need to really tweak this part - I want to align it to the left side of the screen and then on the right we have a list of rules of stuff.-->
+    
+    
     <a href="calendar.html" target="_self" title="This takes you to our calendar">
         <button>Availability Calendar</button>
     </a> 
     <a href="prices.html" target="_self" title="This takes you to page 3">
         <button>Prices</button>
     </a>
+
+
+    <iframe src = "calendar.html" width = 80% max-width = 90% height = "750" style="margin-top: 20px;"></iframe>
+    <br>
+     <footer>
+        <p>&copy; 2025 Community Gym Rentals | All rights reserved.</p>
+    </footer>
 </body>
 </html>
