@@ -69,60 +69,92 @@
         button:hover {
             background-color: #1a1466;
         }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .tab-buttons {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .tab-buttons button {
+            margin: 0 10px;
+        }
     </style>
 </head>
 <body>
 
     <div class="banner">Check Out</div>
+    <br>
+    <a href="calendar.html" target="_self" title="This takes you to our calendar!">
+        <button>Back to Calendar</button>
+    </a>
 
     <div class="checkout-container">
+        <div class="tab-buttons">
+            <button id="tab1-btn" class="active" onclick="showTab(1)">Step 1: Booking Info</button>
+            <button id="tab2-btn" onclick="showTab(2)">Step 2: Confirm</button>
+        </div>
+
+        <!-- Step 1: Booking Info -->
         <form id="checkout-form">
-            <label for="buyer-name">Name of Buyer:</label>
-            <input type="text" id="buyer-name" required>
+            <div id="tab1" class="tab-content active">
+                <label for="buyer-name">Name of Buyer:</label>
+                <input type="text" id="buyer-name" required>
 
-            <label for="buyer-address">Address:</label>
-            <input type="text" id="buyer-address" required>
+                <label for="buyer-address">Address:</label>
+                <input type="text" id="buyer-address" required>
+                <label for="date">Selected Date:</label>
+                <input type="text" id="date" readonly>
 
-            <label for="price">Price Fees:</label>
-            <input type="text" id="price" required>
+                <label for="availability">Time Availability:</label>
+                <input type="text" id="availability" readonly>
 
-            <label for="deposit">Deposit Requirements:</label>
-            <input type="text" id="deposit" required>
 
-            <label for="payment-method">Payment Method:</label>
-            <select id="payment-method" required>
-                <option value="">Select a payment method</option>
-                <option value="credit-card">Credit Card</option>
-                <option value="paypal">PayPal</option>
-                <option value="bank-transfer">Bank Transfer</option>
-                <option value="cash">Cash</option>
-            </select>
+                <div id="specific-hours-container">
+                    <label for="specific-hours">Enter Desired Hours:</label>
+                    <input type="text" id="specific-hours" placeholder="e.g., 9 AM - 11 AM">
+                </div>
 
-            <label for="date">Selected Date:</label>
-            <input type="text" id="date" readonly>
+                <label for="purpose">Purpose of Use:</label>
+                <input type="text" id="purpose" required>
 
-            <label for="availability">Time Availability:</label>
-            <input type="text" id="availability" readonly>
+                <label for="capacity">Estimated Capacity:</label>
+                <input type="number" id="capacity" min="1" required>
 
-            <label for="duration">Duration:</label>
-            <select id="duration" required>
-                <option value="">Select duration</option>
-                <option value="full-day">Full Day</option>
-                <option value="half-day">Half Day</option>
-                <option value="specific-hours">Specific Hours</option>
-            </select>
+                <label for="equipment">Equipment Usage:</label>
+                <textarea id="equipment" placeholder="List any equipment needed (weights, mats, basketball hoops, etc.)"></textarea>
 
-            <label for="purpose">Purpose of Use:</label>
-            <input type="text" id="purpose" required>
+                <div class="button-container">
+                    <button type="button" onclick="showTab(2)">Next</button>
+                </div>
+            </div>
 
-            <label for="capacity">Estimated Capacity:</label>
-            <input type="number" id="capacity" min="1" required>
-
-            <label for="equipment">Equipment Usage:</label>
-            <textarea id="equipment" placeholder="List any equipment needed (weights, mats, basketball hoops, etc.)"></textarea>
-
-            <div class="button-container">
-                <button type="submit">Confirm Booking</button>
+            <!-- Step 2: Confirm Booking 
+             going to need to add stuff to it, make it more interactive with method of payment. other things are fine-->
+            <div id="tab2" class="tab-content">
+                <h3>Booking Summary</h3>
+                <p><strong>Price:</strong> $<span id="estimated-price"></span></p>
+                <p><strong>Deposit:</strong> $<span id="deposit-amount"></span></p>
+                <label for="payment-method">Payment Method:</label>
+                <select id="payment-method" required>
+                    <option value="">Select a payment method</option>
+                    <option value="credit-card">Credit Card</option>
+                    <option value="paypal">PayPal</option>
+                    <option value="bank-transfer">Bank Transfer</option>
+                    <option value="cash">Cash</option>
+                </select>
+                <!--Going to need to add a box that appears when credit card or cash or whatever if selected asking for their number-->
+                <div class="button-container">
+                    <button type="submit">Confirm Booking</button>
+                </div>
             </div>
         </form>
     </div>
@@ -165,6 +197,48 @@
             document.getElementById('date').value = selectedDate;
             document.getElementById('availability').value = getAvailability(selectedDate);
         }
+
+        // Handle the "Duration" dropdown change
+        document.getElementById('duration').addEventListener('change', function() {
+            const duration = this.value;
+            const specificHoursContainer = document.getElementById('specific-hours-container');
+            if (duration === 'specific-hours') {
+                specificHoursContainer.style.display = 'block';
+            } else {
+                specificHoursContainer.style.display = 'none';
+            }
+        });
+
+        // Show tab function
+        function showTab(tabNumber) {
+            const tab1 = document.getElementById('tab1');
+            const tab2 = document.getElementById('tab2');
+            const tab1Btn = document.getElementById('tab1-btn');
+            const tab2Btn = document.getElementById('tab2-btn');
+
+            if (tabNumber === 1) {
+                tab1.classList.add('active');
+                tab2.classList.remove('active');
+                tab1Btn.classList.add('active');
+                tab2Btn.classList.remove('active');
+            } else if (tabNumber === 2) {
+                tab1.classList.remove('active');
+                tab2.classList.add('active');
+                tab1Btn.classList.remove('active');
+                tab2Btn.classList.add('active');
+                
+                // Fill in the summary details on the second tab
+                document.getElementById('estimated-price').textContent = document.getElementById('price').value;
+                document.getElementById('deposit-amount').textContent = document.getElementById('deposit').value;
+                document.getElementById('payment-method-summary').textContent = document.getElementById('payment-method').value;
+            }
+        }
+
+        // Handle form submission (confirm booking)
+        document.getElementById('checkout-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form from submitting normally
+            alert('Booking Confirmed!'); // Show success message
+        });
     </script>
 
 </body>
