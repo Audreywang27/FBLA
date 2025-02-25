@@ -19,12 +19,13 @@ body {
     font-family: 'Times New Roman', Times, serif; 
     width: 90%;
     display: flex; 
-    justify-content: space-between; 
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
     background-color: #251c86; 
     padding: 20px 5%; 
-    height: 80px;
     flex-wrap: wrap;
+    flex:1;
     }
 
 .bannerleft, .bannerright {
@@ -34,14 +35,12 @@ body {
 }
 
 .bannerleft {
-    justify-content:left;
-    flex:auto;
+    flex:1;
 }
 
 .bannerright {
-    justify-content: right;
-    align-items: end;
     flex:1;
+    white-space: nowrap;
 }
 
 #bannertext {
