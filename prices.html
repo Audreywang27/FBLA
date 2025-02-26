@@ -98,11 +98,8 @@
     </a>
 
     <div class="checkout-container">
-        <div class="tab-buttons">
-            <button id="tab1-btn" class="active" onclick="showTab(1)">Step 1: Booking Info</button>
-            <button id="tab2-btn" onclick="showTab(2)">Step 2: Confirm</button>
-        </div>
-
+        <!-- Remove the Step 1 and Step 2 buttons -->
+        
         <!-- Step 1: Booking Info -->
         <form id="checkout-form">
             <div id="tab1" class="tab-content active">
@@ -138,8 +135,11 @@
             </div>
 
             <!-- Step 2: Confirm Booking 
-             going to need to add stuff to it, make it more interactive with method of payment. other things are fine-->
+             Add a Back button at the top of the second page -->
             <div id="tab2" class="tab-content">
+                <div class="button-container">
+                    <button type="button" onclick="showTab(1)">Back to First Page</button>
+                </div>
                 <h3>Booking Summary</h3>
                 <p><strong>Price:</strong> $<span id="estimated-price"></span></p>
                 <p><strong>Deposit:</strong> $<span id="deposit-amount"></span></p>
@@ -151,7 +151,7 @@
                     <option value="bank-transfer">Bank Transfer</option>
                     <option value="cash">Cash</option>
                 </select>
-                <!--Going to need to add a box that appears when credit card or cash or whatever if selected asking for their number-->
+                <!-- Going to need to add a box that appears when credit card or cash or whatever is selected asking for their number -->
                 <div class="button-container">
                     <button type="submit">Confirm Booking</button>
                 </div>
@@ -213,24 +213,17 @@
         function showTab(tabNumber) {
             const tab1 = document.getElementById('tab1');
             const tab2 = document.getElementById('tab2');
-            const tab1Btn = document.getElementById('tab1-btn');
-            const tab2Btn = document.getElementById('tab2-btn');
 
             if (tabNumber === 1) {
                 tab1.classList.add('active');
                 tab2.classList.remove('active');
-                tab1Btn.classList.add('active');
-                tab2Btn.classList.remove('active');
             } else if (tabNumber === 2) {
                 tab1.classList.remove('active');
                 tab2.classList.add('active');
-                tab1Btn.classList.remove('active');
-                tab2Btn.classList.add('active');
                 
                 // Fill in the summary details on the second tab
                 document.getElementById('estimated-price').textContent = document.getElementById('price').value;
                 document.getElementById('deposit-amount').textContent = document.getElementById('deposit').value;
-                document.getElementById('payment-method-summary').textContent = document.getElementById('payment-method').value;
             }
         }
 
