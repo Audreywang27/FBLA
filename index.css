@@ -15,7 +15,7 @@ body {
     padding: 0;
     flex-direction: column;
     overflow-x: hidden; /* adjusts the body to prevent horizontal scrolling */
-    gap:8vh;
+    gap:5vh;
 }
 
 h1, p {
