@@ -45,28 +45,28 @@
      
         }
         /* Gray bar at the top */
-/* Gray bar at the top */
-.top-bar {
-    width: 100%;
-    height: 7vh; /* Keeps consistent height */
-    background-color: gray;
-    display: flex;
-    justify-content: flex-end; /* Moves buttons to the right */
-    align-items: center; /* Centers buttons vertically */
-    padding: 0 30px; /* Adds spacing on the sides */
-    position: relative; /* Stays at the top but doesn't scroll */
-}
+
+            .top-bar {
+                width: 100%;
+                height: 7vh; 
+                background-color:#cacaca;
+                display: flex;
+                justify-content: flex-end; 
+                align-items: center; 
+                padding: 0 30px; 
+                position: relative; 
+            }
 
 /* Buttons inside the gray bar */
 .top-bar button {
-    height: 60%; /* Makes buttons smaller inside the gray bar */
-    padding: 0 20px; /* Controls button width */
+    height: 60%;
+    padding: 0 20px;
     background-color: #251c86;
     color: white;
     border: none;
     cursor: pointer;
     font-size: 16px;
-    margin-left: 10px; /* Spaces buttons apart */
+    margin-left: 10px;
 }
 
 /* Adds space between the last button and the right edge */
@@ -75,7 +75,8 @@
 }
 
 .top-bar button:hover {
-    background-color: #3a2ea1;
+    transition: all 0.3s ease-in-out;
+    background-color: #FFD700;
 }
 
 .cropped-image {
@@ -85,12 +86,12 @@
 
 .cropped-image img {
     width: 100%;
-    height: auto; /* Maintain aspect ratio */
-    display: block; /* Remove any space below the image */
+    height: auto; 
+    display: block; 
 }
 
 
-/* Adjust body to prevent unwanted horizontal scrolling */
+/* adjusts the body to prevent  horizontal scrolling */
 body {
     overflow-x: hidden;
 }
@@ -193,7 +194,7 @@ body {
         }
 
         .side-button:hover {
-            background-color: rgb(83, 80, 255);
+            background-color: #FFD700;
         }
 
         .side-button span {
@@ -214,6 +215,13 @@ body {
             visibility: visible;
             left: 50px;
         }
+
+        .icons {
+            width: 16px; /* Set the width of the icons */
+            height: 16px; /* Set the height of the icons */
+         object-fit: contain; /* Ensures the icon is properly scaled inside the button */
+        }
+        
         /*The sections of the websites that the buttons link to*/
         section {
             padding: 5vh;
@@ -243,7 +251,7 @@ body {
 
     <div class="top-bar">
         <a href="index.html">
-            <button>Homepage</button>
+            <button>Home Page</button>
         </a>
         
         <a href="tickets.html">
@@ -283,15 +291,15 @@ body {
     <div class="side-buttons">
         <a href="#" class="side-button" title="Go to homepage">
             <span>Home</span>
-            <img class="icons" src=icons/home-icon.png>
+            <img class="icons" src="https://cdn-icons-png.flaticon.com/512/25/25694.png">
         </a>
         <a href="#section2" class="side-button" title="Go to info page">
             <span>Info</span>
-            <img class="icons" src=icons/info-icon.png>
+            <img class="icons" src="https://cdn.iconscout.com/icon/free/png-256/free-information-icon-download-in-svg-png-gif-file-formats--notice-info-ui-google-material-vol-2-pack-user-interface-icons-30515.png">
         </a>
         <a href="#section3" class="side-button" title="Go to calendar">
             <span>Calendar</span>
-            <img class="icons" src=icons/calender-icon.png>
+            <img class="icons" src="https://cdn-icons-png.flaticon.com/512/55/55281.png">
         </a>
     </div>
 
