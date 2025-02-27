@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Checkout</title>
+    <style>
+        /* Reset margin and padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Top bar */
+        .top-bar {
+            width: 100%;
+            height: 7vh;
+            background-color: gray;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 0 30px;
+        }
+
+        .top-bar button {
+            height: 60%;
+            padding: 0 20px;
+            background-color: #251c86;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin-left: 10px;
+        }
+
+        .top-bar button:hover {
+            background-color: #3a2ea1;
+        }
+
+        /* Body */
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            text-align: center;
+            background-color: white;
+        }
+
+        /* Banner */
+        .banner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            background-color: #251c86;
+            color: white;
+            padding: 20px;
+            font-size: 36px;
+            margin: 0;
+        }
+
+        /* Checkout container */
+        .checkout-container {
+            width: 80%;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 2px solid #251c86;
+            border-radius: 10px;
+            background-color: white;
+        }
+
+        /* Form elements */
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #251c86;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        /* Button container */
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #251c86;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #1a1466;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="index.html">
+            <button>Home Page</button>
+        </a>
+        <a href="tickets.html">
+            <button>Ticket Portal</button>
+        </a>
+    </div>
+
+    <div class="banner">Event Checkout</div>
+
+    <div class="checkout-container">
+        <form id="checkout-form">
+            <label for="event-name">Event Name:</label>
+            <input type="text" id="event-name" readonly>
+
+            <label for="event-date">Event Date:</label>
+            <input type="text" id="event-date" readonly>
+
+            <label for="ticket-price">Ticket Price ($):</label>
+            <input type="text" id="ticket-price" readonly>
+
+            <label for="ticket-quantity">Number of Tickets:</label>
+            <input type="number" id="ticket-quantity" min="1" required>
+
+            <label for="payment-method">Payment Method:</label>
+            <select id="payment-method" required>
+                <option value="cash">Cash</option>
+                <option value="creditcard">Credit Card</option>
+            </select>
+
+            <div id="credit-card-container" style="display: none;">
+                <label for="credit-card-number">Credit Card Number:</label>
+                <input type="text" id="credit-card-number" placeholder="Enter Credit Card Number">
+            </div>
+
+            <div class="button-container">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Get event name and date from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const eventName = urlParams.get('eventName');
+        const eventDate = urlParams.get('eventDate');
+
+        // Randomly generate ticket price between $50 and $100
+        const ticketPrice = Math.floor(Math.random() * (100 - 50 + 1)) + 50;
+
+        // Display event info and ticket price
+        document.getElementById('event-name').value = eventName;
+        document.getElementById('event-date').value = eventDate;
+        document.getElementById('ticket-price').value = ticketPrice;
+
+        // Show or hide credit card input field based on payment method
+        document.getElementById('payment-method').addEventListener('change', function() {
+            const creditCardContainer = document.getElementById('credit-card-container');
+            if (this.value === 'creditcard') {
+                creditCardContainer.style.display = 'block';
+            } else {
+                creditCardContainer.style.display = 'none';
+            }
+        });
+
+        // Handle form submission
+        document.getElementById('checkout-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Thank you for your purchase!');
+        });
+    </script>
+</body>
+</html>
