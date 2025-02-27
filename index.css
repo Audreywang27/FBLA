@@ -144,8 +144,10 @@ iframe {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 8vh;
-    height: 8vh;
+    width: 5vw;
+    max-width: 50px;
+    height: 5vw;
+    max-height: 50px;
     background-color: #251c86;
     border: 0.3vh solid white;
     border-radius: 50%;
@@ -179,8 +181,14 @@ iframe {
 }
 
 .icons {
-    width: 5vh; 
-    height: 5vh; 
+    width: 75%; 
+    height: 75%; 
+    object-fit: contain; 
+}
+
+.icons2 {
+    width: 60%; 
+    height: 60%; 
     object-fit: contain; 
 }
 
