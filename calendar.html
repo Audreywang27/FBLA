@@ -4,110 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calendar Availability</title>
-    <style>
-        .banner {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            background-color: #251c86;
-            color: white;
-            padding: 20px;
-            font-family: 'Times New Roman', Times, serif;
-            text-shadow: 2px 2px 4px black;
-            margin: 0;
-            font-size: 48px;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Times New Roman', Times, serif;
-            text-align: center;
-            background-color: white;
-            margin:0%;
-        }
-        .month {
-            margin: 5vh auto;
-            border: 2px solid #251c86;
-            padding: 10px;
-            border-radius: 10px;
-            width: 80%;
-            max-width: 600px;
-            background-color: white;
-        }
-        .month h2 {
-            background-color: #251c86;
-            color: white;
-            padding: 10px;
-            margin: 0;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background-color: white;
-        }
-        th, td {
-            width: 14%;
-            height: 40px;
-            text-align: center;
-            border: 1px solid white;
-        }
-        td button {
-            width: 100%;
-            height: 100%;
-            border: none;
-            background-color: white;
-            color: black;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-       /* Fancy button effects --> makes it change color when you hover over */
-        td button:hover {
-            background-color: rgb(255, 215, 83);
-        }
-        td.grayed-out:hover{
-            background-color: gray;
-        }
-        .grayed-out button {
-            background-color: #ccc !important;
-            color: gray;
-            pointer-events: none;
-        }
-
-        td {
-            width: 14%;
-            height: 40px;
-            text-align: center;
-            border: 1px solid white;
-        }
-
-
-    </style>
+    <link rel="stylesheet" type="text/css" href="calendar.css">
 </head>
 <body>
     <div class="banner">
-        Yearly Calendar For Gym Availability
+        <div class="logo-container">
+            <img src="https://resources.finalsite.net/images/f_auto,q_auto/v1714404178/solonschoolsorg/rwqjnjryyqeww8rk5qxv/SCLogo.png" alt="Solon Schools logo">
+            <h1>Gym Availability Calendar</h1>
+        </div>
     </div>
-    <p>
-        <br>Welcome to our calendar page! All dates <b>not filled gray</b> are available for rental. 
-        <br>
-        <br>Please note that weekday availability between <b>August 14 and May 25 is only after 4pm </b>and may not always be available for rental.
-        <br>
-        <br><b>For more information about availability and policies,</b> please scroll up or click on the second button to your right to our Info page.
-        <br>
-        <br>To rent a day, please click on your desired date below. You will then be taken to checkout. 
-    </p>
-    <br>
+    
+    <div class="instructions">
+        <p>
+            <br>Welcome to our calendar page! All dates <b>not filled gray</b> are available for rental. 
+            <br>
+            <br>Please note that weekday availability between <b>August 14 and May 25 is only after 4pm </b>and may not always be available for rental.
+            <br>
+            <br><b>For more information about availability and policies,</b> please scroll up or click on the second button to your right to our Info page.
+            <br>
+            <br>To rent a day, please click on your desired date below. You will then be taken to checkout. 
+        </p>
+    </div>
+    
+    <div class="month-selector">
+        <select id="monthSelect">
+            <option value="0">January</option>
+            <option value="1">February</option>
+            <option value="2">March</option>
+            <option value="3">April</option>
+            <option value="4">May</option>
+            <option value="5">June</option>
+            <option value="6">July</option>
+            <option value="7">August</option>
+            <option value="8">September</option>
+            <option value="9">October</option>
+            <option value="10">November</option>
+            <option value="11">December</option>
+        </select>
+    </div>
+    
     <div id="calendar"></div>
+
+    <footer>
+        <p>&copy; 2025 SHS Gym Rentals. All rights reserved.</p>
+    </footer>
 
     <script>
         const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
         const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
         const unavailableDays = ["2025-03-15", "2025-03-16", "2025-04-05", "2025-06-10"];
         const unavailableWeeks = ["2025-07-07"];
+        
         function isGrayedOut(dateString) {
             return unavailableDays.includes(dateString) || unavailableWeeks.some(weekStart => isInSameWeek(weekStart, dateString));
         }
+        
         function isInSameWeek(startOfWeek, dateToCheck) {
             const start = new Date(startOfWeek);
             const checkDate = new Date(dateToCheck);
@@ -117,35 +68,50 @@
             checkMonday.setDate(checkMonday.getDate() - checkMonday.getDay() + 1);
             return startMonday.getTime() === checkMonday.getTime();
         }
-        function generateCalendar(year) {
-            let calendarHTML = "";
-            for (let month = 1; month <= 12; month++) {
-                let firstDay = new Date(year, month - 1, 1).getDay();
-                calendarHTML += `<div class="month"><h2>${months[month - 1]}</h2><table><thead><tr>`;
-                ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].forEach(day => {
-                    calendarHTML += `<th>${day}</th>`;
-                });
-                calendarHTML += "</tr></thead><tbody><tr>";
-                for (let i = 0; i < firstDay; i++) {
-                    calendarHTML += "<td></td>";
-                }
-                for (let day = 1; day <= daysInMonth[month - 1]; day++) {
-                    let dateString = `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-                    let isDisabled = isGrayedOut(dateString) ? "grayed-out" : "";
-                    calendarHTML += `<td class="${isDisabled}">
-                        <button ${isDisabled ? "disabled" : ""} onclick="location.href='prices.html?date=${dateString}'">
-                            ${day}
-                        </button>
-                    </td>`;
-                    if ((day + firstDay) % 7 === 0) {
-                        calendarHTML += "</tr><tr>";
-                    }
-                }
-                calendarHTML += "</tr></tbody></table></div>";
+        
+        function generateCalendarForMonth(year, month) {
+            let firstDay = new Date(year, month, 1).getDay();
+            let calendarHTML = `<div class="month"><h2>${months[month]}</h2><table><thead><tr>`;
+            ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].forEach(day => {
+                calendarHTML += `<th>${day}</th>`;
+            });
+            calendarHTML += "</tr></thead><tbody><tr>";
+            
+            // Empty cells for days before the first day of the month
+            for (let i = 0; i < firstDay; i++) {
+                calendarHTML += "<td></td>";
             }
+            
+            // Cells for days of the month
+            for (let day = 1; day <= daysInMonth[month]; day++) {
+                let dateString = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+                let isDisabled = isGrayedOut(dateString) ? "grayed-out" : "";
+                calendarHTML += `<td class="${isDisabled}">
+                    <button ${isDisabled ? "disabled" : ""} onclick="location.href='prices.html?date=${dateString}'">
+                        ${day}
+                    </button>
+                </td>`;
+                if ((day + firstDay) % 7 === 0) {
+                    calendarHTML += "</tr><tr>";
+                }
+            }
+            calendarHTML += "</tr></tbody></table></div>";
             document.getElementById("calendar").innerHTML = calendarHTML;
         }
-        generateCalendar(2025);
+        
+        // Initial calendar generation (default to current month)
+        const currentDate = new Date();
+        const currentMonth = currentDate.getMonth();
+        generateCalendarForMonth(2025, currentMonth);
+        
+        // Set the default selected month in the dropdown
+        document.querySelector("#monthSelect").value = currentMonth;
+        
+        // Add event listener to the month select dropdown
+        document.querySelector("#monthSelect").addEventListener("change", function() {
+            const selectedMonth = parseInt(this.value);
+            generateCalendarForMonth(2025, selectedMonth);
+        });
     </script>
 </body>
 </html>

@@ -4,151 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Event Checkout</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        .top-bar {
-            width: 100%;
-            height: 7vh; 
-            background-color: #cacaca;
-            display: flex;
-            justify-content: flex-end; 
-            align-items: center; 
-            padding: 0 30px; 
-            position: relative; 
-        }
-
-        .top-bar button {
-            height: 60%;
-            padding: 0 20px;
-            background-color: #251c86;
-            color: white;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-            margin-left: 10px;
-        }
-
-        .top-bar button:last-child {
-            margin-right: 20px;
-        }
-
-        .top-bar button:hover {
-            transition: all 0.3s ease-in-out;
-            background-color: #FFD700;
-        }
-
-        body {
-            font-family: 'Times New Roman', Times, serif;
-            text-align: center;
-            background-color: white;
-        }
-
-        .banner {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            background-color: #251c86;
-            color: white;
-            padding: 20px;
-            font-size: 36px;
-            margin: 0;
-        }
-
-        .checkout-container {
-            width: 80%;
-            max-width: 600px;
-            margin: 20px auto;
-            padding: 20px;
-            border: 2px solid #251c86;
-            border-radius: 10px;
-            background-color: white;
-        }
-
-        label {
-            display: block;
-            margin: 10px 0 5px;
-            font-weight: bold;
-        }
-
-        input, select, textarea {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #251c86;
-            border-radius: 5px;
-            font-size: 16px;
-            margin-bottom: 10px;
-        }
-
-        .button-container {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        button {
-            padding: 10px 20px;
-            background-color: #251c86;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 18px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #1a1466;
-        }
-
-        .confirmation-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-size: 24px;
-            text-align: center;
-        }
-
-        .close-button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #FFD700;
-            color: black;
-            border: none;
-            border-radius: 5px;
-            font-size: 18px;
-            cursor: pointer;
-        }
-
-        .close-button:hover {
-            background-color: #ffcc00;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="customertickets.css">
 </head>
 <body>
-    <div class="top-bar">
-        <a href="index.html">
-            <button>Home Page</button>
-        </a>
-        <a href="tickets.html">
-            <button>Ticket Portal</button>
-        </a>
-    </div>
 
     <div class="banner">Event Checkout</div>
-
+    <br>
+    <a href="tickets.html" target="_self" title="This takes you to our Ticket Portal!">
+        <button>Back to Ticket Portal</button>
+    </a>
     <div class="checkout-container">
         <form id="checkout-form">
             <label for="event-name">Event Name:</label>
