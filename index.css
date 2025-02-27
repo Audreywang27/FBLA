@@ -1,4 +1,4 @@
-:root {
+   :root {
     --bg-color: #bcbcbc;
 }
 
@@ -140,10 +140,10 @@ iframe {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 30px;
-    height: 30px;
+    width: 8vh;
+    height: 8vh;
     background-color: #251c86;
-    border: 2px solid white;
+    border: 0.3vh solid white;
     border-radius: 50%;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
@@ -175,8 +175,8 @@ iframe {
 }
 
 .icons {
-    width: 16px; 
-    height: 16px; 
+    width: 5vh; 
+    height: 5vh; 
     object-fit: contain; 
 }
 
