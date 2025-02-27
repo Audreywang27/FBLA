@@ -7,73 +7,73 @@
     <link rel="stylesheet" type="text/css" href="customertickets.css">
 </head>
 <body>
-
-    <div class="banner">Event Checkout</div>
-    <br>
-    <a href="tickets.html" target="_self" title="This takes you to our Ticket Portal!">
-        <button>Back to Ticket Portal</button>
-    </a>
-    <div class="checkout-container">
-        <form id="checkout-form">
-            <label for="event-name">Event Name:</label>
-            <input type="text" id="event-name" readonly>
-
-            <label for="event-date">Event Date:</label>
-            <input type="text" id="event-date" readonly>
-
-            <label for="ticket-price">Ticket Price ($):</label>
-            <input type="text" id="ticket-price" readonly>
-
-            <label for="ticket-quantity">Number of Tickets:</label>
-            <input type="number" id="ticket-quantity" min="1" required>
-
-            <label for="payment-method">Payment Method:</label>
-            <select id="payment-method" required>
-                <option value="cash">Cash</option>
-                <option value="creditcard">Credit Card</option>
-            </select>
-
-            <div id="credit-card-container" style="display: none;">
-                <label for="credit-card-number">Credit Card Number:</label>
-                <input type="text" id="credit-card-number" placeholder="Enter Credit Card Number">
-            </div>
-
-            <div class="button-container">
-                <button type="submit">Submit</button>
-            </div>
-        </form>
+<body>
+    <div class="banner">
+        <div class="logo-container">
+            <img src="https://resources.finalsite.net/images/f_auto,q_auto/v1714404178/solonschoolsorg/rwqjnjryyqeww8rk5qxv/SCLogo.png" alt="Solon Schools logo">
+            <h1>SHS Gym Rentals</h1>
+        </div>
+        <div class="nav-buttons">
+            <a href="tickets.html">
+                <button>Ticket Portal</button>
+            </a>
+        </div>
     </div>
 
+    <div class="cropped-image">
+        <img src="https://i.postimg.cc/GhHkmb2m/solon-high-school-solon-oh-primaryphoto.jpg" alt="Beautiful picture of our school">
+    </div>
+
+    <section id="section2">
+        <h2>Info Page</h2>
+        <div class="content-container">
+            <iframe src="https://drive.google.com/file/d/1-6Ck2U2Qlsf8oKdCRYdMCicz97-uZjOU/preview" width="80%" height="500" style="margin-bottom: 20px;"></iframe>
+            <div class="gallery-container">
+                <img src="https://theshscourier.com/wp-content/uploads/2015/09/DSC_0261.jpg" class="active" alt="Gym Image 1">
+                <img src="https://cleveland.reel-scout.com/up_images/2/1524012.jpg" alt="Gym Image 2">
+                <img src="https://cleveland.reel-scout.com/up_images/3/1524013.jpg" alt="Gym Image 3">
+                <img src="https://cleveland.reel-scout.com/up_images/0/1523960.jpg" alt="Gym Image 4">
+            </div>
+        </div>
+    </section>
+
+    <section id="section3">
+        <iframe src="calendar.html" width="90%" max-width="95%" height="750" style="margin-top: 8vh;"></iframe>
+    </section>
+
+    <!-- Side buttons for navigation -->
+    <div class="side-buttons">
+        <a href="#" class="side-button" title="Go to homepage">
+            <span>Home</span>
+            <img class="icons" src="home.png">
+        </a>
+        <a href="#section2" class="side-button" title="Go to info page">
+            <span>Info</span>
+            <img class="icons" src="info.png">
+        </a>
+        <a href="#section3" class="side-button" title="Go to calendar">
+            <span>Calendar</span>
+            <img class="icons2" src="calendar.png">
+        </a>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Community Gym Rentals | All rights reserved.</p>
+    </footer>
+
     <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        const eventName = urlParams.get('eventName');
-        const eventDate = urlParams.get('eventDate');
-        const ticketPrice = Math.floor(Math.random() * (100 - 50 + 1)) + 50;
+        const images = document.querySelectorAll(".gallery-container img");
+        let currentIndex = 0;
 
-        document.getElementById('event-name').value = eventName;
-        document.getElementById('event-date').value = eventDate;
-        document.getElementById('ticket-price').value = ticketPrice;
+        function changeImage() {
+            images[currentIndex].classList.remove("active");
+            currentIndex = (currentIndex + 1) % images.length;
+            images[currentIndex].classList.add("active");
+        }
 
-        document.getElementById('payment-method').addEventListener('change', function() {
-            const creditCardContainer = document.getElementById('credit-card-container');
-            creditCardContainer.style.display = this.value === 'creditcard' ? 'block' : 'none';
-        });
-
-        document.getElementById('checkout-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const confirmationScreen = document.createElement('div');
-            confirmationScreen.className = 'confirmation-screen';
-            confirmationScreen.innerHTML = '<h1>Thank you for your purchase!</h1><button class="close-button">Close</button>';
-            document.body.appendChild(confirmationScreen);
-            
-            setTimeout(() => {
-                confirmationScreen.remove();
-            }, 3000);
-            
-            document.querySelector('.close-button').addEventListener('click', function() {
-                confirmationScreen.remove();
-            });
-        });
+        setInterval(changeImage, 5000); // Change image every 5 seconds
     </script>
+
+</body>
 </body>
 </html>
