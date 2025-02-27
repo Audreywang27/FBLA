@@ -114,6 +114,8 @@
                 <label for="availability">Time Availability:</label>
                 <input type="text" id="availability" readonly>
 
+                <label for="event-name">Enter Event Name:</label>
+                <input type="text" id="event-name" required>
 
                 <div id="specific-hours-container">
                     <label for="specific-hours">Enter Desired Hours:</label>
@@ -141,17 +143,7 @@
                     <button type="button" onclick="showTab(1)">Back to First Page</button>
                 </div>
                 <h3>Booking Summary</h3>
-                <p><strong>Price:</strong> $<span id="estimated-price"></span></p>
-                <p><strong>Deposit:</strong> $<span id="deposit-amount"></span></p>
-                <label for="payment-method">Payment Method:</label>
-                <select id="payment-method" required>
-                    <option value="">Select a payment method</option>
-                    <option value="credit-card">Credit Card</option>
-                    <option value="paypal">PayPal</option>
-                    <option value="bank-transfer">Bank Transfer</option>
-                    <option value="cash">Cash</option>
-                </select>
-                <!-- Going to need to add a box that appears when credit card or cash or whatever is selected asking for their number -->
+                <p>Thank you! We will respond to you shortly and discuss your event's pricing, as well as organization.</p>
                 <div class="button-container">
                     <button type="submit">Confirm Booking</button>
                 </div>
@@ -220,10 +212,6 @@
             } else if (tabNumber === 2) {
                 tab1.classList.remove('active');
                 tab2.classList.add('active');
-                
-                // Fill in the summary details on the second tab
-                document.getElementById('estimated-price').textContent = document.getElementById('price').value;
-                document.getElementById('deposit-amount').textContent = document.getElementById('deposit').value;
             }
         }
 
