@@ -4,20 +4,141 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ticket Portal</title>
-    <link rel="stylesheet" type="text/css" href="tickets.css">
+    <style>
+        :root {
+            --bg-color: #ffffff;
+        }
+
+        .banner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            background-color: #251c86;
+            color: white;
+            text-shadow: 2px 2px 4px black;
+            padding: 20px;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 30px;
+            height: 150px;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            background-color: var(--bg-color);
+        }
+
+       
+.top-bar {
+    width: 100%;
+    height: 7vh; 
+    background-color: #cacaca;
+    display: flex;
+    justify-content: flex-end; 
+    align-items: center; 
+    padding: 0 30px; 
+    position: relative; 
+}
+
+/* Buttons inside the gray bar */
+.top-bar button {
+    height: 60%;
+    padding: 0 20px;
+    background-color: #251c86;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 10px;
+}
+
+/* Adds space between the last button and the right edge */
+.top-bar button:last-child {
+    margin-right: 20px;
+}
+
+.top-bar button:hover {
+    transition: all 0.3s ease-in-out;
+    background-color: #FFD700;
+}
+
+        .content-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            margin-top: 40px;
+            width: 95%;
+        }
+
+        iframe {
+            width: 70%;
+            height: 650px;
+            border: none;
+            margin-left: 10px;
+        }
+
+        .event-table {
+            width: 35%;
+            border-collapse: collapse;
+            background-color: white;
+            margin-right: 10px;
+        }
+
+        .event-table th, .event-table td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .event-table th {
+            background-color: #251c86;
+            color: white;
+        }
+
+        .event-table td a {
+            color: #251c86;
+            text-decoration: none;
+        }
+
+        .event-table td a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background-color: #251c86;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            width: 100%;
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 14px;
+        }
+    </style>
 </head>
 <body>
 
+    <div class="top-bar">
+        <a href="index.html">
+            <button>Home Page</button>
+        </a>
+        <a href="tickets.html">
+            <button>Ticket Portal</button>
+        </a>
+    </div>
+
     <div class="banner">
-        <div class="logo-container">
-            <img src="https://resources.finalsite.net/images/f_auto,q_auto/v1714404178/solonschoolsorg/rwqjnjryyqeww8rk5qxv/SCLogo.png" alt="Solon Schools logo">
-            <h1>Ticket Portal</h1>
-        </div>
-        <div class="nav-buttons">
-            <a href="index.html">
-                <button>Home Page</button>
-            </a>
-        </div>
+        <h1>Ticket Portal</h1>
     </div>
 
     <div class="content-container">
