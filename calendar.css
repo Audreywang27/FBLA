@@ -1,4 +1,4 @@
-   *, *::before, *::after {
+ *, *::before, *::after {
     box-sizing: border-box;
 }
 
@@ -47,6 +47,7 @@ body {
     padding: 10px;
     border-radius: 10px;
     width: 90%;
+    font-size: 95%;
     max-width: 600px;
     background-color: white;
 }
@@ -134,9 +135,16 @@ footer p {
     border-color: #FFD700;
 }
 
-        @media (max-width: 768px) {
+@media (max-width: 700px) {
     .logo-container {
         flex-direction: column;
         text-align: center;
+    }
+
+    .calendar-table {
+        width: 90%; /* Ensures the table shrinks with its container */
+        max-width: 95%; /* Prevents overflow */
+        display: block; /* Allows better responsiveness */
+        overflow-x: hidden; /* Enables horizontal scrolling if needed */
     }
 }
