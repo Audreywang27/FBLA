@@ -15,7 +15,7 @@ body {
     padding: 0;
     flex-direction: column;
     overflow-x: hidden; /* adjusts the body to prevent horizontal scrolling */
-
+    gap:8vh;
 }
 
 h1, p {
@@ -181,9 +181,8 @@ iframe {
 }
 
 section {
-    padding: 5vh;
-    margin-top: 8vh;
-    width: 90%;
+    padding: 5vh 5vw;
+    width: 95%;
     background-color: #f0f0f0;
 }
 
@@ -191,9 +190,6 @@ section h2 {
     text-align: center;
 }
 
-#section3{
-    margin-bottom:8vh;
-}
 
 #section3 iframe {
     width: 80%; 
@@ -343,12 +339,7 @@ footer p {
         left: 0;
     }
 
-    #section2 h2 {
-        margin-bottom: 5px; 
-    }
-
     #section3 {
-    margin: 5px 0; 
     padding: 10px; 
     width: 100%;
     display: flex;
