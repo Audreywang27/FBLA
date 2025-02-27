@@ -1,4 +1,4 @@
-*, *::before, *::after {
+   *, *::before, *::after {
     box-sizing: border-box;
 }
 
@@ -42,18 +42,18 @@ body {
 }
 
 .month {
-    margin: 5vh auto;
+    margin: 8vh auto;
     border: 2px solid #251c86;
     padding: 10px;
     border-radius: 10px;
-    width: 80%;
+    width: 90%;
     max-width: 600px;
     background-color: white;
 }
 .month h2 {
     background-color: #251c86;
     color: white;
-    padding: 10px;
+    padding: 0px;
     margin: 0;
 }
 table {
@@ -65,7 +65,7 @@ th, td {
     width: 14%;
     height: 40px;
     text-align: center;
-    border: 1px solid white;
+    border: 1px solid rgb(0, 0, 0);
 }
 td button {
     width: 100%;
@@ -79,6 +79,7 @@ td button {
 
 /* Fancy button effects --> makes it change color when you hover over */
 td button:hover {
+    transition: all 0.3s ease-in-out;
     background-color: rgb(255, 215, 83);
 }
 td.grayed-out:hover{
