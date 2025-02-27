@@ -112,7 +112,6 @@ footer p {
     font-size: 14px;
 }
 
-/* Month selector styles */
 .month-selector {
     margin: 20px auto;
     width: 80%;
@@ -135,7 +134,6 @@ footer p {
 }
 
         @media (max-width: 768px) {
-    /* Adjust banner for small screens */
     .logo-container {
         flex-direction: column;
         text-align: center;

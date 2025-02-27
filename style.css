@@ -14,8 +14,12 @@ body {
     margin: 0;
     padding: 0;
     flex-direction: column;
-    /* adjusts the body to prevent horizontal scrolling */
-    overflow-x: hidden;
+    overflow-x: hidden; /* adjusts the body to prevent horizontal scrolling */
+
+}
+
+h1, p {
+    text-align: center;
 }
 
 .banner {
@@ -82,10 +86,6 @@ body {
     display: block; 
 }
 
-h1, p {
-    text-align: center;
-}
-
 .content-container {
     display: flex;
     justify-content: space-between;
@@ -126,7 +126,6 @@ iframe {
     opacity: 1;
 }
 
-/* Side button styles */
 .side-buttons {
     position: fixed;
     right: 10px;
@@ -176,12 +175,11 @@ iframe {
 }
 
 .icons {
-    width: 16px; /* Set the width of the icons */
-    height: 16px; /* Set the height of the icons */
-    object-fit: contain; /* Ensures the icon is properly scaled inside the button */
+    width: 16px; 
+    height: 16px; 
+    object-fit: contain; 
 }
 
-/*The sections of the websites that the buttons link to*/
 section {
     padding: 5vh;
     margin-top: 8vh;
@@ -198,14 +196,13 @@ section h2 {
 }
 
 #section3 iframe {
-    width: 80%; /* Ensure calendar iframe takes up full width */
-    max-width: 90%; /* Prevent overflow */
-    height: 750px; /* Adjust height */
-    display: block; /* Ensures it behaves like a block element */
+    width: 80%; 
+    max-width: 90%; 
+    height: 750px; 
+    display: block; 
     margin: 5vh auto; 
 }
 
-/* Footer */
 footer {
     background-color: #251c86;
     color: white;
@@ -250,7 +247,7 @@ footer p {
 
 .cropped-image {
     width: 100%;
-    height: 50vh; /* Adjust height to cover more of the screen */
+    height: 50vh; 
     overflow: hidden; /* Prevents overflow */
     position: relative;
 }
@@ -258,7 +255,7 @@ footer p {
 .cropped-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensures the image fills the container without distortion */
+    object-fit: cover; /* fill container w/o distortion */
     display: block;
 }
 
@@ -273,7 +270,6 @@ footer p {
         height: auto;
     }
 
-    /* Side buttons should not overlap content */
     .side-buttons {
         right: 5px;
         top: 20%;
@@ -288,7 +284,6 @@ footer p {
         font-size: 14px;
     }
 
-    /* Adjust footer for better spacing */
     footer {
         font-size: 12px;
         padding: 10px;
@@ -298,9 +293,9 @@ footer p {
         height: auto;
         position: relative;
         aspect-ratio: 16 / 9;
-        margin-top: 10px; /* Reduce top margin */
-        margin-bottom: 10px; /* Reduce bottom margin */
-        padding: 5px; /* Add slight padding for spacing */
+        margin-top: 10px; 
+        margin-bottom: 10px; 
+        padding: 5px; 
     }
 
     .gallery-container img {
@@ -310,20 +305,20 @@ footer p {
         position: absolute;
         top: 0;
         left: 0;
-        margin: 0; /* Remove any default margin */
+        margin: 0; 
         padding: 0;
     }
     #section2 {
-        margin: 5px 0; /* Reduce top and bottom margins */
-        padding: 10px; /* Keep minimal padding */
+        margin: 5px 0; 
+        padding: 10px; 
         width: 100%;
     }
 
     .content-container {
         flex-direction: column;
-        gap: 10px; /* Reduce spacing between elements */
-        margin: 0; /* Remove additional margins */
-        padding: 5px; /* Reduce padding */
+        gap: 10px; 
+        margin: 0; 
+        padding: 5px; 
     }
 
     iframe {
@@ -333,38 +328,38 @@ footer p {
 
     .gallery-container {
         width: 100%;
-        height: 80vh; /* Increase height to cover more of the screen */
+        height: 80vh; 
         margin-top: 10px;
         position: relative;
-        overflow: hidden; /* Ensure full-screen cropping */
+        overflow: hidden; 
     }
 
     .gallery-container img {
         width: 100%;
         height: 100%;
-        object-fit: cover; /* Crop images to fill the entire space */
+        object-fit: cover; 
         position: absolute;
         top: 0;
         left: 0;
     }
 
     #section2 h2 {
-        margin-bottom: 5px; /* Reduce space below heading */
+        margin-bottom: 5px; 
     }
 
     #section3 {
-    margin: 5px 0; /* Reduce top and bottom margins */
-    padding: 10px; /* Minimize padding */
+    margin: 5px 0; 
+    padding: 10px; 
     width: 100%;
     display: flex;
-    justify-content: center; /* Center the calendar */
+    justify-content: center; 
     }
 
     #section3 iframe {
         width: 100%;
         max-width: 100%;
-        height: 700px; /* Adjust height for better visibility */
-        margin: 0; /* Remove any default margins */
+        height: 700px; 
+        margin: 0; 
         padding: 0;
         display: block;
     }
